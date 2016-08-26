@@ -1,0 +1,57 @@
+#map-canvas {
+  height: 100%;
+}
+
+.dashboard {
+  height: auto;
+  background: #9DC1C5;
+}
+
+.dial {
+  height: 100px;
+  width: 100px;
+}
+
+.draw-tools, .icon-select, .dial-rotation, .color-picker, .form-group {
+  height: auto;
+  max-height: 250px;
+
+}
+
+#select-icon {
+  width: 150px;
+}
+
+.box-widget {
+  min-height: 50px;
+  max-height: 210px;
+  list-style-type: none;
+  border: 1px solid #999;
+  padding: 5px 5px 0 5px;
+  margin-bottom: 10px;
+  background-color: #1A3836;
+}
+
+.divIFrame {
+  text-align:center;
+  width:360px;
+  height: 250px;
+   position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: #fff;
+}
+
+#TextMessage {
+  margin: 10px auto;
+  width: 320px;
+}
+
+.radioLeft
+{
+  text-align:left;
+  padding: 10px;
+}

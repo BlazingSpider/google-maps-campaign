@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="keywords" content="Google Maps Customization Tool marker polygon" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:site_name" content="Blazing Spider" />
+	<meta property="article:publisher" content="https://www.facebook.com/blazingspider" />
+	<meta name="twitter:site" content="@BlazingSpider"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="By using this tool, you can place custom markers and Polygons, then produce a working HTML page">
+    <meta name="author" content="">
+	<link rel="icon" href="Images/favicon.ico">
+
+	<title>Google Maps Customization Tool</title>
+
+	<!-- <link rel="stylesheet" href="lib/bootstrap.min.css"> -->
+
+   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" type="text/css" href="lib/spectrum.css">
+  <link rel="stylesheet" type="text/css" href="lib/jquery-ui.min.css">
+  <link rel="stylesheet" type="text/css" href="lib/jquery-ui.theme.min.css">
+  <link rel="stylesheet" type="text/css" href="lib/jquery-ui.structure.min.css">
+
+<script src="analytics.js"></script>
+</head>
+
+<body>
+<div id="dashboard">
+  <ul>
+    <li><a href="#box-widget">Action</a></li>
+    <li><a href="#icon-select">Marker</a></li>
+    <li><a href="#rotation-angle">Angle</a></li>
+    <li><a href="#color-picker">Color</a></li>
+    <li><a href="#info-text">Info</a></li>
+    <li><a href="#form-group">Save</a></li>
+  </ul>
+  <div id="box-widget">
+			<h4>Choose What To Do:</h4>
+			<input type="radio" name="group_add_remove" value="Add Marker" onchange="AddRemoveMarker();" checked> Add Marker<br>
+			<input type="radio" name="group_add_remove" value="Remove Marker" onchange="AddRemoveMarker();"> Remove Marker<br>
+			<input type="radio" name="group_add_remove" value="Add Polygon" onchange="AddRemoveMarker();"> Add Polygon<br>
+			<input type="radio" name="group_add_remove" value="Remove Polygon" onchange="AddRemoveMarker();"> Remove Polygon<br>
+			<button id="new-poly" type="button" onclick="NewPoly();">Another Polygon</button>
+			<button id="new-poly-loop" type="button" onclick="PolyNewLoop();">New Loop in Polygon</button>
+  </div>
+  <div id="icon-select">
+		<div class="box-widget">
+			<label for="select-icon" style="display: table-cell;padding-bottom:10px;">Choose An Icon For Marker</label>
+			<select id="select-icon" size="8">
+				<option value="_SOLDIER_1">Soldier 1</option>
+				<option value="_SOLDIER_2">Soldier 2</option>
+				<option value="_SOLDIER_3">Soldier 3</option>
+				<option value="_SOLDIER_COMMANDO">Soldier Commando</option>
+				<option value="_BATTLE_TANK">Battle Tank</option>
+				<option value="_MINE_NAVAL">Naval Mine</option>
+				<option value="_MINE_FIELD">Mine Field</option>
+				<option value="_DANGER_SIGN">Danger Sign</option>
+				<option value="_HELICOPTER_TOP">Helicopter Top View</option>
+				<option value="_HELICOPTER_SIDE">Helicopter Side View</option>
+				<option value="_EXPLOSION">Explosion</option>
+				<option disabled>_________</option>
+				<option value="ADJUST">ADJUST</option>
+				<option value="ADN">ADN</option>
+				<option value="ALIGN_CENTER">ALIGN_CENTER</option>
+				<option value="ALIGN_JUSTIFY">ALIGN_JUSTIFY</option>
+				<option value="ALIGN_LEFT">ALIGN_LEFT</option>
+				<option value="ALIGN_RIGHT">ALIGN_RIGHT</option>
+				<option value="AMBULANCE">AMBULANCE</option>
+				<option value="ANCHOR">ANCHOR</option>
+				<option value="ANDROID">ANDROID</option>
+				<option value="ANGELLIST">ANGELLIST</option>
+				<option value="ANGLE_DOUBLE_DOWN">ANGLE_DOUBLE_DOWN</option>
+				<option value="ANGLE_DOUBLE_LEFT">ANGLE_DOUBLE_LEFT</option>
+				<option value="ANGLE_DOUBLE_RIGHT">ANGLE_DOUBLE_RIGHT</option>
+				<option value="ANGLE_DOUBLE_UP">ANGLE_DOUBLE_UP</option>
+				<option value="ANGLE_DOWN">ANGLE_DOWN</option>
+				<option value="ANGLE_LEFT">ANGLE_LEFT</option>
+				<option value="ANGLE_RIGHT">ANGLE_RIGHT</option>
+				<option value="ANGLE_UP">ANGLE_UP</option>
+				<option value="APPLE">APPLE</option>
+				<option value="ARCHIVE">ARCHIVE</option>
+				<option value="AREA_CHART">AREA_CHART</option>
+				<option value="ARROW_CIRCLE_DOWN">ARROW_CIRCLE_DOWN</option>
+				<option value="ARROW_CIRCLE_LEFT">ARROW_CIRCLE_LEFT</option>
+				<option value="ARROW_CIRCLE_O_DOWN">ARROW_CIRCLE_O_DOWN</option>
+				<option value="ARROW_CIRCLE_O_LEFT">ARROW_CIRCLE_O_LEFT</option>
+				<option value="ARROW_CIRCLE_O_RIGHT">ARROW_CIRCLE_O_RIGHT</option>
+				<option value="ARROW_CIRCLE_O_UP">ARROW_CIRCLE_O_UP</option>
+				<option value="ARROW_CIRCLE_RIGHT">ARROW_CIRCLE_RIGHT</option>
+				<option value="ARROW_CIRCLE_UP">ARROW_CIRCLE_UP</option>
+				<option value="ARROW_DOWN">ARROW_DOWN</option>
+				<option value="ARROW_LEFT">ARROW_LEFT</option>
+				<option value="ARROW_RIGHT">ARROW_RIGHT</option>
+				<option value="ARROW_UP">ARROW_UP</option>
+				<option value="ARROWS">ARROWS</option>
+				<option value="ARROWS_ALT">ARROWS_ALT</option>
+				<option value="ARROWS_H">ARROWS_H</option>
+				<option value="ARROWS_V">ARROWS_V</option>
+				<option value="ASTERISK">ASTERISK</option>
+				<option value="AT">AT</option>
+				<option value="BACKWARD">BACKWARD</option>
+				<option value="BAN">BAN</option>
+				<option value="BAR_CHART_O">BAR_CHART_O</option>
+				<option value="BARCODE">BARCODE</option>
+				<option value="BEER">BEER</option>
+				<option value="BEHANCE">BEHANCE</option>
+				<option value="BEHANCE_SQUARE">BEHANCE_SQUARE</option>
+				<option value="BELL">BELL</option>
+				<option value="BELL_O">BELL_O</option>
+				<option value="BELL_SLASH">BELL_SLASH</option>
+				<option value="BELL_SLASH_O">BELL_SLASH_O</option>
+				<option value="BICYCLE">BICYCLE</option>
+				<option value="BINOCULARS">BINOCULARS</option>
+				<option value="BIRTHDAY_CAKE">BIRTHDAY_CAKE</option>
+				<option value="BITBUCKET">BITBUCKET</option>
+				<option value="BITBUCKET_SQUARE">BITBUCKET_SQUARE</option>
+				<option value="BOLD">BOLD</option>
+				<option value="BOMB">BOMB</option>
+				<option value="BOOK">BOOK</option>
+				<option value="BOOKMARK">BOOKMARK</option>
+				<option value="BOOKMARK_O">BOOKMARK_O</option>
+				<option value="BRIEFCASE">BRIEFCASE</option>
+				<option value="BTC">BTC</option>
+				<option value="BUG">BUG</option>
+				<option value="BUILDING">BUILDING</option>
+				<option value="BUILDING_O">BUILDING_O</option>
+				<option value="BULLHORN">BULLHORN</option>
+				<option value="BULLSEYE">BULLSEYE</option>
+				<option value="BUS">BUS</option>
+				<option value="CALCULATOR">CALCULATOR</option>
+				<option value="CALENDAR">CALENDAR</option>
+				<option value="CALENDAR_O">CALENDAR_O</option>
+				<option value="CAMERA">CAMERA</option>
+				<option value="CAMERA_RETRO">CAMERA_RETRO</option>
+				<option value="CAR">CAR</option>
+				<option value="CARET_DOWN">CARET_DOWN</option>
+				<option value="CARET_LEFT">CARET_LEFT</option>
+				<option value="CARET_RIGHT">CARET_RIGHT</option>
+				<option value="CARET_UP">CARET_UP</option>
+				<option value="CC">CC</option>
+				<option value="CC_AMEX">CC_AMEX</option>
+				<option value="CC_DISCOVER">CC_DISCOVER</option>
+				<option value="CC_MASTERCARD">CC_MASTERCARD</option>
+				<option value="CC_PAYPAL">CC_PAYPAL</option>
+				<option value="CC_STRIPE">CC_STRIPE</option>
+				<option value="CC_VISA">CC_VISA</option>
+				<option value="CERTIFICATE">CERTIFICATE</option>
+				<option value="CHECK">CHECK</option>
+				<option value="CHECK_CIRCLE">CHECK_CIRCLE</option>
+				<option value="CHECK_CIRCLE_O">CHECK_CIRCLE_O</option>
+				<option value="CHECK_SQUARE">CHECK_SQUARE</option>
+				<option value="CHECK_SQUARE_O">CHECK_SQUARE_O</option>
+				<option value="CHEVRON_CIRCLE_DOWN">CHEVRON_CIRCLE_DOWN</option>
+				<option value="CHEVRON_CIRCLE_LEFT">CHEVRON_CIRCLE_LEFT</option>
+				<option value="CHEVRON_CIRCLE_RIGHT">CHEVRON_CIRCLE_RIGHT</option>
+				<option value="CHEVRON_CIRCLE_UP">CHEVRON_CIRCLE_UP</option>
+				<option value="CHEVRON_DOWN">CHEVRON_DOWN</option>
+				<option value="CHEVRON_LEFT">CHEVRON_LEFT</option>
+				<option value="CHEVRON_RIGHT">CHEVRON_RIGHT</option>
+				<option value="CHEVRON_UP">CHEVRON_UP</option>
+				<option value="CHILD">CHILD</option>
+				<option value="CIRCLE">CIRCLE</option>
+				<option value="CIRCLE_O">CIRCLE_O</option>
+				<option value="CIRCLE_O_NOTCH">CIRCLE_O_NOTCH</option>
+				<option value="CIRCLE_THIN">CIRCLE_THIN</option>
+				<option value="CLOCK_O">CLOCK_O</option>
+				<option value="CLOUD">CLOUD</option>
+				<option value="CLOUD_DOWNLOAD">CLOUD_DOWNLOAD</option>
+				<option value="CLOUD_UPLOAD">CLOUD_UPLOAD</option>
+				<option value="CODE">CODE</option>
+				<option value="CODE_FORK">CODE_FORK</option>
+				<option value="CODEPEN">CODEPEN</option>
+				<option value="COFFEE">COFFEE</option>
+				<option value="COLUMNS">COLUMNS</option>
+				<option value="COMMENT">COMMENT</option>
+				<option value="COMMENT_O">COMMENT_O</option>
+				<option value="COMMENTS">COMMENTS</option>
+				<option value="COMMENTS_O">COMMENTS_O</option>
+				<option value="COMPASS">COMPASS</option>
+				<option value="COMPRESS">COMPRESS</option>
+				<option value="COPYRIGHT">COPYRIGHT</option>
+				<option value="CREDIT_CARD">CREDIT_CARD</option>
+				<option value="CROP">CROP</option>
+				<option value="CROSSHAIRS">CROSSHAIRS</option>
+				<option value="CSS3">CSS3</option>
+				<option value="CUBE">CUBE</option>
+				<option value="CUBES">CUBES</option>
+				<option value="CUTLERY">CUTLERY</option>
+				<option value="DATABASE">DATABASE</option>
+				<option value="DELICIOUS">DELICIOUS</option>
+				<option value="DESKTOP">DESKTOP</option>
+				<option value="DEVIANTART">DEVIANTART</option>
+				<option value="DIGG">DIGG</option>
+				<option value="DOT_CIRCLE_O">DOT_CIRCLE_O</option>
+				<option value="DOWNLOAD">DOWNLOAD</option>
+				<option value="DRIBBBLE">DRIBBBLE</option>
+				<option value="DROPBOX">DROPBOX</option>
+				<option value="DRUPAL">DRUPAL</option>
+				<option value="EJECT">EJECT</option>
+				<option value="ELLIPSIS_H">ELLIPSIS_H</option>
+				<option value="ELLIPSIS_V">ELLIPSIS_V</option>
+				<option value="ENVELOPE">ENVELOPE</option>
+				<option value="ENVELOPE_O">ENVELOPE_O</option>
+				<option value="ENVELOPE_SQUARE">ENVELOPE_SQUARE</option>
+				<option value="ERASER">ERASER</option>
+				<option value="EURO">EURO</option>
+				<option value="EXCHANGE">EXCHANGE</option>
+				<option value="EXCLAMATION">EXCLAMATION</option>
+				<option value="EXCLAMATION_CIRCLE">EXCLAMATION_CIRCLE</option>
+				<option value="EXPAND">EXPAND</option>
+				<option value="EXTERNAL_LINK">EXTERNAL_LINK</option>
+				<option value="EXTERNAL_LINK_SQUARE">EXTERNAL_LINK_SQUARE</option>
+				<option value="EYE">EYE</option>
+				<option value="EYE_SLASH">EYE_SLASH</option>
+				<option value="EYEDROPPER">EYEDROPPER</option>
+				<option value="FACEBOOK">FACEBOOK</option>
+				<option value="FACEBOOK_SQUARE">FACEBOOK_SQUARE</option>
+				<option value="FAST_BACKWARD">FAST_BACKWARD</option>
+				<option value="FAST_FORWARD">FAST_FORWARD</option>
+				<option value="FAX">FAX</option>
+				<option value="FEMALE">FEMALE</option>
+				<option value="FIGHTER_JET">FIGHTER_JET</option>
+				<option value="FILE">FILE</option>
+				<option value="FILE_CODE_O">FILE_CODE_O</option>
+				<option value="FILE_EXCEL_O">FILE_EXCEL_O</option>
+				<option value="FILE_O">FILE_O</option>
+				<option value="FILE_PDF_O">FILE_PDF_O</option>
+				<option value="FILE_PICTURE_O">FILE_PICTURE_O</option>
+				<option value="FILE_POWERPOINT_O">FILE_POWERPOINT_O</option>
+				<option value="FILE_SOUND_O">FILE_SOUND_O</option>
+				<option value="FILE_TEXT">FILE_TEXT</option>
+				<option value="FILE_TEXT_O">FILE_TEXT_O</option>
+				<option value="FILE_VIDEO_O">FILE_VIDEO_O</option>
+				<option value="FILE_WORD_O">FILE_WORD_O</option>
+				<option value="FILE_ZIP_O">FILE_ZIP_O</option>
+				<option value="FILES_O">FILES_O</option>
+				<option value="FILM">FILM</option>
+				<option value="FILTER">FILTER</option>
+				<option value="FIRE">FIRE</option>
+				<option value="FIRE_EXTINGUISHER">FIRE_EXTINGUISHER</option>
+				<option value="FLAG">FLAG</option>
+				<option value="FLAG_CHECKERED">FLAG_CHECKERED</option>
+				<option value="FLAG_O">FLAG_O</option>
+				<option value="FLASH">FLASH</option>
+				<option value="FLASK">FLASK</option>
+				<option value="FLICKR">FLICKR</option>
+				<option value="FOLDER">FOLDER</option>
+				<option value="FOLDER_O">FOLDER_O</option>
+				<option value="FOLDER_OPEN">FOLDER_OPEN</option>
+				<option value="FOLDER_OPEN_O">FOLDER_OPEN_O</option>
+				<option value="FONT">FONT</option>
+				<option value="FORWARD">FORWARD</option>
+				<option value="FOURSQUARE">FOURSQUARE</option>
+				<option value="FROWN_O">FROWN_O</option>
+				<option value="GAMEPAD">GAMEPAD</option>
+				<option value="GBP">GBP</option>
+				<option value="GE">GE</option>
+				<option value="GEAR">GEAR</option>
+				<option value="GEARS">GEARS</option>
+				<option value="GIFT">GIFT</option>
+				<option value="GIT">GIT</option>
+				<option value="GIT_SQUARE">GIT_SQUARE</option>
+				<option value="GITHUB">GITHUB</option>
+				<option value="GITHUB_ALT">GITHUB_ALT</option>
+				<option value="GITHUB_SQUARE">GITHUB_SQUARE</option>
+				<option value="GITTIP">GITTIP</option>
+				<option value="GLASS">GLASS</option>
+				<option value="GLOBE">GLOBE</option>
+				<option value="GOOGLE">GOOGLE</option>
+				<option value="GOOGLE_PLUS">GOOGLE_PLUS</option>
+				<option value="GOOGLE_PLUS_SQUARE">GOOGLE_PLUS_SQUARE</option>
+				<option value="GOOGLE_WALLET">GOOGLE_WALLET</option>
+				<option value="H_SQUARE">H_SQUARE</option>
+				<option value="HACKER_NEWS">HACKER_NEWS</option>
+				<option value="HAND_O_DOWN">HAND_O_DOWN</option>
+				<option value="HAND_O_LEFT">HAND_O_LEFT</option>
+				<option value="HAND_O_RIGHT">HAND_O_RIGHT</option>
+				<option value="HAND_O_UP">HAND_O_UP</option>
+				<option value="HDD_O">HDD_O</option>
+				<option value="HEADER">HEADER</option>
+				<option value="HEADPHONES">HEADPHONES</option>
+				<option value="HEART">HEART</option>
+				<option value="HEART_O">HEART_O</option>
+				<option value="HISTORY">HISTORY</option>
+				<option value="HOME">HOME</option>
+				<option value="HOSPITAL_O">HOSPITAL_O</option>
+				<option value="HTML5">HTML5</option>
+				<option value="INBOX">INBOX</option>
+				<option value="INDENT">INDENT</option>
+				<option value="INFO">INFO</option>
+				<option value="INFO_CIRCLE">INFO_CIRCLE</option>
+				<option value="INSTAGRAM">INSTAGRAM</option>
+				<option value="IOXHOST">IOXHOST</option>
+				<option value="ITALIC">ITALIC</option>
+				<option value="JOOMLA">JOOMLA</option>
+				<option value="JSFIDDLE">JSFIDDLE</option>
+				<option value="KEY">KEY</option>
+				<option value="KEYBOARD_O">KEYBOARD_O</option>
+				<option value="LANGUAGE">LANGUAGE</option>
+				<option value="LAPTOP">LAPTOP</option>
+				<option value="LASTFM">LASTFM</option>
+				<option value="LASTFM_SQUARE">LASTFM_SQUARE</option>
+				<option value="LEAF">LEAF</option>
+				<option value="LEGAL">LEGAL</option>
+				<option value="LEMON_O">LEMON_O</option>
+				<option value="LEVEL_DOWN">LEVEL_DOWN</option>
+				<option value="LEVEL_UP">LEVEL_UP</option>
+				<option value="LIGHTBULB_O">LIGHTBULB_O</option>
+				<option value="LINE_CHART">LINE_CHART</option>
+				<option value="LINK">LINK</option>
+				<option value="LINKEDIN">LINKEDIN</option>
+				<option value="LINKEDIN_SQUARE">LINKEDIN_SQUARE</option>
+				<option value="LINUX">LINUX</option>
+				<option value="LIST">LIST</option>
+				<option value="LIST_ALT">LIST_ALT</option>
+				<option value="LIST_OL">LIST_OL</option>
+				<option value="LIST_UL">LIST_UL</option>
+				<option value="LOCATION_ARROW">LOCATION_ARROW</option>
+				<option value="LOCK">LOCK</option>
+				<option value="LONG_ARROW_DOWN">LONG_ARROW_DOWN</option>
+				<option value="LONG_ARROW_LEFT">LONG_ARROW_LEFT</option>
+				<option value="LONG_ARROW_RIGHT">LONG_ARROW_RIGHT</option>
+				<option value="LONG_ARROW_UP">LONG_ARROW_UP</option>
+				<option value="MAGIC">MAGIC</option>
+				<option value="MAGNET">MAGNET</option>
+				<option value="MALE">MALE</option>
+				<option value="MAP_MARKER">MAP_MARKER</option>
+				<option value="MAXCDN">MAXCDN</option>
+				<option value="MEANPATH">MEANPATH</option>
+				<option value="MEDKIT">MEDKIT</option>
+				<option value="MEH_O">MEH_O</option>
+				<option value="MICROPHONE">MICROPHONE</option>
+				<option value="MICROPHONE_SLASH">MICROPHONE_SLASH</option>
+				<option value="MINUS">MINUS</option>
+				<option value="MINUS_CIRCLE">MINUS_CIRCLE</option>
+				<option value="MINUS_SQUARE">MINUS_SQUARE</option>
+				<option value="MINUS_SQUARE_O">MINUS_SQUARE_O</option>
+				<option value="MOBILE_PHONE">MOBILE_PHONE</option>
+				<option value="MONEY">MONEY</option>
+				<option value="MOON_O">MOON_O</option>
+				<option value="MORTAR_BOARD">MORTAR_BOARD</option>
+				<option value="MUSIC">MUSIC</option>
+				<option value="NEWSPAPER_O">NEWSPAPER_O</option>
+				<option value="OPENID">OPENID</option>
+				<option value="OUTDENT">OUTDENT</option>
+				<option value="PAGELINES">PAGELINES</option>
+				<option value="PAINT_BRUSH">PAINT_BRUSH</option>
+				<option value="PAPERCLIP">PAPERCLIP</option>
+				<option value="PARAGRAPH">PARAGRAPH</option>
+				<option value="PASTE">PASTE</option>
+				<option value="PAUSE">PAUSE</option>
+				<option value="PAW">PAW</option>
+				<option value="PAYPAL">PAYPAL</option>
+				<option value="PENCIL">PENCIL</option>
+				<option value="PENCIL_SQUARE">PENCIL_SQUARE</option>
+				<option value="PENCIL_SQUARE_O">PENCIL_SQUARE_O</option>
+				<option value="PHONE">PHONE</option>
+				<option value="PHONE_SQUARE">PHONE_SQUARE</option>
+				<option value="PICTURE_O">PICTURE_O</option>
+				<option value="PIE_CHART">PIE_CHART</option>
+				<option value="PIED_PIPER">PIED_PIPER</option>
+				<option value="PIED_PIPER_ALT">PIED_PIPER_ALT</option>
+				<option value="PINTEREST">PINTEREST</option>
+				<option value="PINTEREST_SQUARE">PINTEREST_SQUARE</option>
+				<option value="PLANE">PLANE</option>
+				<option value="PLAY">PLAY</option>
+				<option value="PLAY_CIRCLE">PLAY_CIRCLE</option>
+				<option value="PLAY_CIRCLE_O">PLAY_CIRCLE_O</option>
+				<option value="PLUG">PLUG</option>
+				<option value="PLUS">PLUS</option>
+				<option value="PLUS_CIRCLE">PLUS_CIRCLE</option>
+				<option value="PLUS_SQUARE">PLUS_SQUARE</option>
+				<option value="PLUS_SQUARE_O">PLUS_SQUARE_O</option>
+				<option value="POWER_OFF">POWER_OFF</option>
+				<option value="PRINT">PRINT</option>
+				<option value="PUZZLE_PIECE">PUZZLE_PIECE</option>
+				<option value="QQ">QQ</option>
+				<option value="QRCODE">QRCODE</option>
+				<option value="QUESTION">QUESTION</option>
+				<option value="QUESTION_CIRCLE">QUESTION_CIRCLE</option>
+				<option value="QUOTE_LEFT">QUOTE_LEFT</option>
+				<option value="QUOTE_RIGHT">QUOTE_RIGHT</option>
+				<option value="RANDOM">RANDOM</option>
+				<option value="REBEL">REBEL</option>
+				<option value="RECYCLE">RECYCLE</option>
+				<option value="REDDIT">REDDIT</option>
+				<option value="REDDIT_SQUARE">REDDIT_SQUARE</option>
+				<option value="REFRESH">REFRESH</option>
+				<option value="RENREN">RENREN</option>
+				<option value="REORDER">REORDER</option>
+				<option value="REPLY">REPLY</option>
+				<option value="REPLY_ALL">REPLY_ALL</option>
+				<option value="RETWEET">RETWEET</option>
+				<option value="ROAD">ROAD</option>
+				<option value="ROCKET">ROCKET</option>
+				<option value="ROTATE_RIGHT">ROTATE_RIGHT</option>
+				<option value="RSS">RSS</option>
+				<option value="RSS_SQUARE">RSS_SQUARE</option>
+				<option value="RUBLE">RUBLE</option>
+				<option value="RUPEE">RUPEE</option>
+				<option value="SAVE">SAVE</option>
+				<option value="SCISSORS">SCISSORS</option>
+				<option value="SEARCH">SEARCH</option>
+				<option value="SEARCH_MINUS">SEARCH_MINUS</option>
+				<option value="SEARCH_PLUS">SEARCH_PLUS</option>
+				<option value="SEND">SEND</option>
+				<option value="SEND_O">SEND_O</option>
+				<option value="SHARE">SHARE</option>
+				<option value="SHARE_ALT">SHARE_ALT</option>
+				<option value="SHARE_ALT_SQUARE">SHARE_ALT_SQUARE</option>
+				<option value="SHARE_SQUARE">SHARE_SQUARE</option>
+				<option value="SHARE_SQUARE_O">SHARE_SQUARE_O</option>
+				<option value="SHEQEL">SHEQEL</option>
+				<option value="SHIELD">SHIELD</option>
+				<option value="SHOPPING_CART">SHOPPING_CART</option>
+				<option value="SIGN_IN">SIGN_IN</option>
+				<option value="SIGN_OUT">SIGN_OUT</option>
+				<option value="SIGNAL">SIGNAL</option>
+				<option value="SITEMAP">SITEMAP</option>
+				<option value="SKYPE">SKYPE</option>
+				<option value="SLACK">SLACK</option>
+				<option value="SLIDERS">SLIDERS</option>
+				<option value="SLIDESHARE">SLIDESHARE</option>
+				<option value="SMILE_O">SMILE_O</option>
+				<option value="SOCCER_BALL_O">SOCCER_BALL_O</option>
+				<option value="SORT_ALPHA_ASC">SORT_ALPHA_ASC</option>
+				<option value="SORT_ALPHA_DESC">SORT_ALPHA_DESC</option>
+				<option value="SORT_AMOUNT_ASC">SORT_AMOUNT_ASC</option>
+				<option value="SORT_AMOUNT_DESC">SORT_AMOUNT_DESC</option>
+				<option value="SORT_DOWN">SORT_DOWN</option>
+				<option value="SORT_NUMERIC_ASC">SORT_NUMERIC_ASC</option>
+				<option value="SORT_NUMERIC_DESC">SORT_NUMERIC_DESC</option>
+				<option value="SORT_UP">SORT_UP</option>
+				<option value="SOUNDCLOUD">SOUNDCLOUD</option>
+				<option value="SPACE_SHUTTLE">SPACE_SHUTTLE</option>
+				<option value="SPINNER">SPINNER</option>
+				<option value="SPOON">SPOON</option>
+				<option value="SPOTIFY">SPOTIFY</option>
+				<option value="SQUARE">SQUARE</option>
+				<option value="SQUARE_O">SQUARE_O</option>
+				<option value="STACK_EXCHANGE">STACK_EXCHANGE</option>
+				<option value="STACK_OVERFLOW">STACK_OVERFLOW</option>
+				<option value="STAR">STAR</option>
+				<option value="STAR_HALF">STAR_HALF</option>
+				<option value="STAR_HALF_O">STAR_HALF_O</option>
+				<option value="STAR_O">STAR_O</option>
+				<option value="STEAM">STEAM</option>
+				<option value="STEAM_SQUARE">STEAM_SQUARE</option>
+				<option value="STEP_BACKWARD">STEP_BACKWARD</option>
+				<option value="STEP_FORWARD">STEP_FORWARD</option>
+				<option value="STETHOSCOPE">STETHOSCOPE</option>
+				<option value="STOP">STOP</option>
+				<option value="STRIKETHROUGH">STRIKETHROUGH</option>
+				<option value="STUMBLEUPON">STUMBLEUPON</option>
+				<option value="STUMBLEUPON_CIRCLE">STUMBLEUPON_CIRCLE</option>
+				<option value="SUBSCRIPT">SUBSCRIPT</option>
+				<option value="SUITCASE">SUITCASE</option>
+				<option value="SUN_O">SUN_O</option>
+				<option value="SUPERSCRIPT">SUPERSCRIPT</option>
+				<option value="SUPPORT">SUPPORT</option>
+				<option value="TABLE">TABLE</option>
+				<option value="TABLET">TABLET</option>
+				<option value="TACHOMETER">TACHOMETER</option>
+				<option value="TAG">TAG</option>
+				<option value="TAGS">TAGS</option>
+				<option value="TASKS">TASKS</option>
+				<option value="TAXI">TAXI</option>
+				<option value="TENCENT_WEIBO">TENCENT_WEIBO</option>
+				<option value="TERMINAL">TERMINAL</option>
+				<option value="TEXT_HEIGHT">TEXT_HEIGHT</option>
+				<option value="TEXT_WIDTH">TEXT_WIDTH</option>
+				<option value="TH">TH</option>
+				<option value="TH_LARGE">TH_LARGE</option>
+				<option value="TH_LIST">TH_LIST</option>
+				<option value="THUMB_TACK">THUMB_TACK</option>
+				<option value="THUMBS_DOWN">THUMBS_DOWN</option>
+				<option value="THUMBS_O_DOWN">THUMBS_O_DOWN</option>
+				<option value="THUMBS_O_UP">THUMBS_O_UP</option>
+				<option value="THUMBS_UP">THUMBS_UP</option>
+				<option value="TICKET">TICKET</option>
+				<option value="TIMES">TIMES</option>
+				<option value="TIMES_CIRCLE">TIMES_CIRCLE</option>
+				<option value="TIMES_CIRCLE_O">TIMES_CIRCLE_O</option>
+				<option value="TINT">TINT</option>
+				<option value="TOGGLE_DOWN">TOGGLE_DOWN</option>
+				<option value="TOGGLE_LEFT">TOGGLE_LEFT</option>
+				<option value="TOGGLE_OFF">TOGGLE_OFF</option>
+				<option value="TOGGLE_ON">TOGGLE_ON</option>
+				<option value="TOGGLE_RIGHT">TOGGLE_RIGHT</option>
+				<option value="TOGGLE_UP">TOGGLE_UP</option>
+				<option value="TRASH">TRASH</option>
+				<option value="TRASH_O">TRASH_O</option>
+				<option value="TREE">TREE</option>
+				<option value="TRELLO">TRELLO</option>
+				<option value="TROPHY">TROPHY</option>
+				<option value="TRUCK">TRUCK</option>
+				<option value="TTY">TTY</option>
+				<option value="TUMBLR">TUMBLR</option>
+				<option value="TUMBLR_SQUARE">TUMBLR_SQUARE</option>
+				<option value="TURKISH_LIRA">TURKISH_LIRA</option>
+				<option value="TWITCH">TWITCH</option>
+				<option value="TWITTER">TWITTER</option>
+				<option value="TWITTER_SQUARE">TWITTER_SQUARE</option>
+				<option value="UMBRELLA">UMBRELLA</option>
+				<option value="UNDERLINE">UNDERLINE</option>
+				<option value="UNDO">UNDO</option>
+				<option value="UNIVERSITY">UNIVERSITY</option>
+				<option value="UNLINK">UNLINK</option>
+				<option value="UNLOCK">UNLOCK</option>
+				<option value="UNLOCK_ALT">UNLOCK_ALT</option>
+				<option value="UNSORTED">UNSORTED</option>
+				<option value="UPLOAD">UPLOAD</option>
+				<option value="USD">USD</option>
+				<option value="USER">USER</option>
+				<option value="USER_MD">USER_MD</option>
+				<option value="USERS">USERS</option>
+				<option value="VIDEO_CAMERA">VIDEO_CAMERA</option>
+				<option value="VIMEO_SQUARE">VIMEO_SQUARE</option>
+				<option value="VINE">VINE</option>
+				<option value="VK">VK</option>
+				<option value="VOLUME_DOWN">VOLUME_DOWN</option>
+				<option value="VOLUME_OFF">VOLUME_OFF</option>
+				<option value="VOLUME_UP">VOLUME_UP</option>
+				<option value="WARNING">WARNING</option>
+				<option value="WEIBO">WEIBO</option>
+				<option value="WEIXIN">WEIXIN</option>
+				<option value="WHEELCHAIR">WHEELCHAIR</option>
+				<option value="WIFI">WIFI</option>
+				<option value="WINDOWS">WINDOWS</option>
+				<option value="WON">WON</option>
+				<option value="WORDPRESS">WORDPRESS</option>
+				<option value="WRENCH">WRENCH</option>
+				<option value="XING">XING</option>
+				<option value="XING_SQUARE">XING_SQUARE</option>
+				<option value="YAHOO">YAHOO</option>
+				<option value="YELP">YELP</option>
+				<option value="YEN">YEN</option>
+				<option value="YOUTUBE">YOUTUBE</option>
+				<option value="YOUTUBE_PLAY">YOUTUBE_PLAY</option>
+				<option value="YOUTUBE_SQUARE">YOUTUBE_SQUARE</option>
+			</select>
+		</div>
+ </div>
+  <div id="rotation-angle">
+		<div class="box-widget">
+			<label for="dial-rotation" style="display: table-cell;padding-bottom:10px;">Rotation Angle (Deg)</label>
+			<input id="dial-rotation" type="text" value="0" class="dial">
+		</div>
+   </div>
+  <div id="color-picker">
+			<div class="box-widget">
+				<label for="showStrokePalette">Choose Stroke Color</label>
+		    	<input type='text' name='showStrokePalette' id='showStrokePalette' value='#000' />
+		    </div>
+			<div class="box-widget">
+				<label for="showFillPalette">Choose Fill Color</label>
+		    	<input type='text' name='showFillPalette' id='showFillPalette' value='#000' />
+		    </div>
+  </div>
+  <div id="info-text">
+	<form name="myform" action="">
+		<label for="TextMessage" style="display: table-cell;padding-bottom:10px;">Enter The Text For The Next Object</label>
+		<textarea name="TextMessage" id="TextMessage" rows="5" cols="60"></textarea>
+		<button type="button" onclick="GetMarkerInfo();" style="display:block;">Set This as Info For The Next Object</button>
+	</form>
+  </div>
+  <div id="form-group">
+	<div class="box-widget">
+		<label for="input-fileName">File name</label>
+		<input type="text" class="form-control" id="input-fileName" value="textFile" placeholder="Enter file name">
+		<div class="radioLeft">
+			<input type="radio" name="group_full_snippet" value="HTML Standalone" onchange="HtmlOrSnippet();" checked>HTML Standalone<br>
+			<input type="radio" name="group_full_snippet" value="Snippet" onchange="HtmlOrSnippet();">Just Snippet<br>
+		</div>
+		<button type="button" style="margin-bottom:10px;" onclick="SaveOutput();">Save Output</button>
+	</div>
+  </div>
+</div>
+<div id="map-canvas"></div>
+<script src="lib/jquery.js"></script>
+<script src="lib/jquery-ui.min.js"></script>
+<script src="lib/jquery.knob.min.js"></script>
+<script src="lib/FileSaver.min.js"></script>
+<script type="text/javascript" src="lib/spectrum.js"></script>
+<script src="lib/fontawesome-markers.min.js"></script>
+<!-- script src="lib/bootstrap.min.js"></script> -->
+
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="List.js"></script>
+<script src="IconSelect.js"></script>
+<script src="Mapster.js"></script>
+<script src="map-options.js"></script>
+<script src="jqueryui.mapster.js"></script>
+<script src="script.js"></script>
+</body>
+
+</html>
